@@ -1,5 +1,9 @@
 require('dotenv').config();
+mongoose = require('mongoose');
 
+const mongo_uri = process.env.MONGO_URI;
+console.log(mongo_uri)
+mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true }); // conectando com o banco
 
 let Person;
 
