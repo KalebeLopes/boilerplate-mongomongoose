@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const personSchema = new Schema ({
   name: String,
   age: Number,
-  favoriteFoods: ['']
+  favoriteFoods: [String]
 })
 
 module.exports = personSchema

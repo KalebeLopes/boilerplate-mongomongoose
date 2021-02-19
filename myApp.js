@@ -6,12 +6,19 @@ const personSchema = require('./schema/person.js');
 const mongo_uri = process.env.MONGO_URI;
 mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true }); // conectando com o banco
 
-let Person;
-Person = mongoose.model('Person', personSchema);
-
+var Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  var kalebe = new Person({
+    name: 'kalebe',
+    age: 21,
+    favoriteFoods: ['lasanha']
+  });
+
+  kalebe.save(function(err, data){
+    if (err) return console.error(err);
+    done(null, data)
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
