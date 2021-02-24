@@ -93,19 +93,27 @@ const findEditThenSave = (personId, done) => {
     console.log(match);
     match.favoriteFoods.push(foodToAdd);
     console.log(match);
-
+    match.save((err, updatePerson) => {
+      if (err) return console.log(err)
+      done(null, updatePerson)
+    });
   })
-
-
-  done(null /*, data*/);
 };
 ///
 
+///
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
-  done(null /*, data*/);
+  Person.findOneAndUpdate({name: personName}, {age: ageToSet}, {new: true}, (err, personUpdated) => {
+    if (err) console.log(err)
+    console.log(personUpdated)
+    done(null, personUpdated)
+  })
+
 };
+///
+
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
